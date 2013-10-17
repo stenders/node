@@ -1,0 +1,29 @@
+//-
+//-  login
+//-
+
+extends layout
+
+block content
+  div(class="page-header")
+    h1(class="text-center") User login
+  form(class="form-horizontal",role="form")
+    div(class="form-group")
+      label(for="inputEmail1",class="col-lg-2 control-label") name
+      div(class="col-lg-10")
+        input(type="text",class="form-control",id="inputEmail1",placeholder="name")
+    div(class="form-group")
+      label(for="inputPassword1",class="col-lg-2 control-label") Password
+      div(class="col-lg-10")
+        input(type="password",class="form-control",id="inputPassword1",placeholder="Password")
+    div(class="form-group")
+      div(class="col-lg-offset-2 col-lg-10")
+        div(class="checkbox")
+          label
+            input(type="checkbox")
+            |Remember me
+          a(href="/reg") Create an account
+    div(class="form-group")
+      div(class="col-lg-offset-2 col-lg-10")
+        button(type="submit",class="btn btn-success") Sign in
+  p(class="text-center") Powered by Node.js 2013

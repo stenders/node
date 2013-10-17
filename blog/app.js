@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -29,12 +28,13 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/u/:user', routes.user);
-app.post('/post', routes.post);
 app.get('/reg', routes.reg);
-app.post('/reg', routes.deReg);
 app.get('/login', routes.login);
-app.post('login', routes.doLogin);
 app.get('/logout', routes.logout);
+
+// app.post('/post', routes.post);
+// app.post('/reg', routes.deReg);
+// app.post('login', routes.doLogin);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
