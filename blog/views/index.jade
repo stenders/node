@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  div(class="jumbotron")
+    h1 欢迎来到 #{title}
+    p #{title}是一个基于Node.js的微博系统
+    p
+      a(class="btn btn-primary btn-large", href="/login") Login
+      a(class="btn btn-success btn-large", href="/register") Register
+  p Powered by Node.js 2013
