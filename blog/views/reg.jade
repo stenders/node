@@ -7,23 +7,23 @@ extends layout
 block content
   div(class="page-header")
     h1(class="text-center") User Register
-  form(class="form-horizontal",role="form")
+  form(class="form-horizontal",method="post",role="form")
     div(class="form-group")
-      label(for="inputEmail1",class="col-lg-2 control-label") name
+      label(for="name",class="col-lg-2 control-label") name
       div(class="col-lg-10")
-        input(type="text",class="form-control",id="inputEmail1",placeholder="name")
+        input(type="text",class="form-control",id="name",name="name",placeholder="name")
     div(class="form-group")
-      label(for="inputEmail1",class="col-lg-2 control-label") Email
+      label(for="email",class="col-lg-2 control-label") Email
       div(class="col-lg-10")
-        input(type="email",class="form-control",id="inputEmail1",placeholder="Email")
+        input(type="email",class="form-control",id="email",name="email",placeholder="Email")
     div(class="form-group")
-      label(for="inputPassword1",class="col-lg-2 control-label") Password
+      label(for="password",class="col-lg-2 control-label") Password
       div(class="col-lg-10")
-        input(type="password",class="form-control",id="inputPassword1",placeholder="Password")
+        input(type="password",class="form-control",id="password",name="password",placeholder="Password")
     div(class="form-group")
-      label(for="inputPassword2",class="col-lg-2 control-label") Confirm Password
+      label(for="password_re",class="col-lg-2 control-label") Confirm Password
       div(class="col-lg-10")
-        input(type="password",class="form-control",id="inputPassword2",placeholder="Confirm Password")
+        input(type="password",class="form-control",id="password_re",name="password_re",placeholder="Confirm Password")
     div(class="form-group")
       div(class="col-lg-offset-2 col-lg-10")
         button(type="submit",class="btn btn-success") Sign in
