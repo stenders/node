@@ -25,7 +25,7 @@ User.prototype.save = function(callback){
 			}
 			collection.insert(user, {safe: true}, function(err, user){
 				mongodb.close()
-				callback(err, user[0]) // success! err is null ? 
+				callback(null, user[0]) // success! err is null ? 
 			})
 		})
 	})
