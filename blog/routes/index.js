@@ -23,17 +23,17 @@ module.exports = function(app){
 		}
 
 		var md5 = crypto.createHash('md5'),
-				password = md5.update(req.body.password).digest('hex');
+				password = md5.update(req.body.password).digest('base64');
 		var newUser = new User({
 			name: req.body.name,
 			password: password,
 			email : req.body.email
 		})
 
-
 		User.get(newUser.name, function(err, user){
 			if(user){
 				req.flash('error', 'user already exsist')
+				console.log(req.flash.error)
 				return res.redirect('/reg')
 			}
 			newUser.save(function(err, user){

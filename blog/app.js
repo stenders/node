@@ -7,6 +7,7 @@ var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 var settings = require('./settings');
+var MongoStore = require('connect-mongo')(express);
 var flash = require('connect-flash');
 var app = express();
 
@@ -21,7 +22,10 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser());
 app.use(express.session({
-  secret: settings.cookieSecret
+  secret: settings.cookieSecret,
+  store: new MongoStore({
+    DB: settings.db
+  })
 }))
 
 app.use(app.router);

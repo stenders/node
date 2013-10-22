@@ -5,11 +5,11 @@
 extends layout
 
 block content
-  div(class="jumbotron")
+  div.jumbotron
     h1 欢迎来到 #{title}
     p #{title}是一个基于Node.js的微博系统
     p
-      a(class="btn btn-primary btn-large", href="/login") Login
+      a.btn.btn-primary.btn-large(href="/login") Login
       &nbsp;
-      a(class="btn btn-success btn-large", href="/reg") Register
-  p(class="text-center") Powered by Node.js 2013
+      a.btn.btn-success.btn-large(href="/reg") Register
+  p.text-center Powered by Node.js 2013
