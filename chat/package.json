@@ -1,0 +1,7 @@
+{
+  "name" : "chat.io",
+  "private": true,
+  "dependencies":{
+    "socket.io": "0.8.7"
+  }
+}

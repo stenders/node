@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat</title>
+</head>
+<body>
+<ul>
+  
+</ul>
+<form id="chat">
+  <input type="text" id="text" />
+  <input type="submit" value="发送">
+</form>
+  <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+  var socket = io.connect('http://127.0.0.1:3000')
+  var ul = $('ul')
+  var text = $('#text')
+  socket.on('message', function(msg){
+    ul.append('<li>' + msg + '</li>')
+  })
+
+  $('#chat').submit(function(e){
+    e.preventDefault()
+    socket.send(text.val())
+    ul.append(text.val())
+    text.val('')
+  })
+  </script>
+</body>
+</html>
