@@ -1,0 +1,16 @@
+//- extends layout
+include layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  - var bool = !true
+  - if(bool)
+    p ok bool is true
+  - else
+    p no, bool is false
+  - var lists = ['chunhang', 'kimi', 'sink', 'lucy']
+  ul
+    for name in lists
+      li name is #{name}
+  script.list.list2.list3#list4(type="text/javascript", defered="defered")
