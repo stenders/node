@@ -1,7 +1,26 @@
 doctype 5
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    title #{title}
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-theme.css')
+    script(type='text/javascript', src='/javascripts/jquery.js')
+    script(type='text/javascript', src='/javascripts/bootstrap.js')
   body
-    block content
+    nav.navbar.navbar-inverse.navbar-default(role="navigation")
+      div.navbar-header
+        button(type="button",class="navbar-toggle",data-toggle="collapse",data-target=".navbar-ex1-collapse")
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href="/") Blog
+
+      div.collapse.navbar-collapse.navbar-ex1-collapse
+        ul.nav.navbar-nav
+          li
+            a(href="/login") Login
+          li
+            a(href="/reg") Register
+    div.container
+      block content

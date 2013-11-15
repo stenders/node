@@ -1,0 +1,26 @@
+//- 
+//- login
+//- 
+
+extends layout
+block content
+  div.page-header
+    h1.text-center User Login
+  form.form-horizontal(role="form")
+    div.form-group
+      label.col-sm-2.control-label(for="inputEmail3") Email
+      div.col-sm-10
+        input.form-control#inputEmail3(type="email",placeholder="Email")
+    div.form-group
+      label.col-sm-2.control-label(for="inputPassword3") Password
+      div.col-sm-10
+        input.form-control#inputPassword3(type="password",placeholder="Password")
+    div.form-group
+      div.col-sm-offset-2.col-sm-10
+        div.checkbox
+          label
+            input(type="checkbox")
+            |Remember me
+    div.form-group
+      div.col-sm-offset-2.col-sm-10
+        button.btn.btn-default(type="submit")|Sign in

@@ -1,5 +1,15 @@
+//-
+//-  index
+//-
+
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div.jumbotron
+    h1 欢迎来到 #{title}
+    p #{title}是一个基于Node.js的微博系统
+    p
+      a.btn.btn-primary.btn-large(href="/login") Login
+      &nbsp;
+      a.btn.btn-success.btn-large(href="/reg") Register
+  p.text-center Powered by Node.js 2013

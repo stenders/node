@@ -1,0 +1,30 @@
+//-
+//-  register
+//-
+
+extends layout
+
+block content
+  div.page-header
+    h1.text-center User Register
+  form.form-horizontal(method="post",role="form")
+    div.form-group
+      label.col-lg-2.control-label(for="name") name
+      div.col-lg-10
+        input.form-control#name(type="text",name="name",placeholder="name")
+    div.form-group
+      label.col-lg-2.control-label(for="email") Email
+      div.col-lg-10
+        input.form-control#email(type="email",name="email",placeholder="Email")
+    div.form-group
+      label.col-lg-2.control-label(for="password") Password
+      div.col-lg-10
+        input.form-control#password(type="password",name="password",placeholder="Password")
+    div.form-group
+      label.col-lg-2.control-label(for="password_re") Confirm Password
+      div.col-lg-10
+        input.form-control#password_re(type="password",name="password_re",placeholder="Confirm Password")
+    div.form-group
+      div.col-lg-offset-2.col-lg-10
+        button.btn.btn-success(type="submit") Sign in
+  p.text-center Powered by Node.js 2013
