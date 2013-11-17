@@ -12,8 +12,8 @@ var server = http.createServer(function(req, res){
 var io = require('socket.io').listen(server)
 
 io.sockets.on('connection', function(socket){
-  console.log('User connected.')
-  socket.on('disconnect', function(){
-    console.log('User disconnected.')
+  socket.on('message', function(data){
+    socket.broadcast.emit('push data', data)
+    socket.emit('push data', data)
   })
 })
