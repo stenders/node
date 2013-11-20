@@ -18,9 +18,22 @@ html
 
       div.collapse.navbar-collapse.navbar-ex1-collapse
         ul.nav.navbar-nav
-          li
-            a(href="/login") Login
-          li
-            a(href="/reg") Register
+          - if(user)
+            li
+              a(href="/post") post
+            li
+              a(href="/logout") logout
+            li 
+              a #{user.name} ,欢迎您！
+          - else
+            li
+              a(href="/login") Login
+            li
+              a(href="/reg") Register
+
     div.container
+      - if(success)
+        div=success
+      - if(error)
+        div=error
       block content

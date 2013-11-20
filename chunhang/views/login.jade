@@ -6,15 +6,15 @@ extends layout
 block content
   div.page-header
     h1.text-center User Login
-  form.form-horizontal(role="form")
+  form.form-horizontal(method="post",role="form")
     div.form-group
-      label.col-sm-2.control-label(for="inputEmail3") Email
+      label.col-sm-2.control-label(for="name") Name
       div.col-sm-10
-        input.form-control#inputEmail3(type="email",placeholder="Email")
+        input.form-control#name(type="text",placeholder="username",name="name")
     div.form-group
-      label.col-sm-2.control-label(for="inputPassword3") Password
+      label.col-sm-2.control-label(for="password") Password
       div.col-sm-10
-        input.form-control#inputPassword3(type="password",placeholder="Password")
+        input.form-control#password(type="password",placeholder="Password",name="password")
     div.form-group
       div.col-sm-offset-2.col-sm-10
         div.checkbox
