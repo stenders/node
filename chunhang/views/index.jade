@@ -5,12 +5,25 @@
 extends layout
 
 block content
-
-  div.jumbotron
-    h1 欢迎来到 #{title}
-    p #{title}是一个基于Node.js的微博系统
-    p
-      a.btn.btn-primary.btn-large(href="/login") Login
-      &nbsp;
-      a.btn.btn-success.btn-large(href="/reg") Register
+  if (user)
+    div.container
+      div.row
+        - posts.forEach(function(post, index){
+          div.col-md-4
+            h2=post.title
+            p from
+              a(href="#") #{post.name}
+              small=post.time
+            p=post.post
+            p
+              a.btn.btn-default(href="#",role="button") View details »
+        - })
+  else
+    div.jumbotron
+      h1 欢迎来到 #{title}
+      p #{title}是一个基于Node.js的微博系统
+      p
+        a.btn.btn-primary.btn-large(href="/login") Login
+        &nbsp;
+        a.btn.btn-success.btn-large(href="/reg") Register
   p.text-center Powered by Node.js 2013

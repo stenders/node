@@ -33,7 +33,9 @@ html
 
     div.container
       - if(success)
-        div=success
+        div.alert.alert-success #{success}
+          a.close(data-dismiss="alert", href="#", aria-hidden="true") &times;
       - if(error)
-        div=error
+        div.alert.alert-danger #{error}
+          a.close(data-dismiss="alert", href="#", aria-hidden="true") &times;
       block content
