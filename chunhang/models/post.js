@@ -12,7 +12,7 @@ Post.prototype.save = function(callback){
   var date = new Date()
   var post = {
     name : this.name,
-    time : date.toLocaleString(),
+    time : date.toDateString(),
     title: this.title,
     post : this.post
   }
@@ -59,7 +59,7 @@ Post.get = function(name, callback){
         if(err){
           return callback(err)
         }
-        callback(null)
+        callback(null, docs)
       })
     })
   })

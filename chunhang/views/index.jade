@@ -11,10 +11,11 @@ block content
         - posts.forEach(function(post, index){
           div.col-md-4
             h2=post.title
-            p from
+            p by 
               a(href="#") #{post.name}
+            p from 
               small=post.time
-            p=post.post
+            p.posts #{post.post}
             p
               a.btn.btn-default(href="#",role="button") View details »
         - })

@@ -1,8 +1,15 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.posts{
+  height: 50px;
+  overflow: hidden;
+}
+.col-md-4{
+  height: 220px;
 }
