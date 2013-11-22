@@ -1,4 +1,3 @@
-
 /*
  * GET home page.
  */
@@ -131,6 +130,32 @@ module.exports = function(app){
     req.session.user = null
     req.flash('success', '登出成功!');
     res.redirect('/')
+  })
+
+  app.get('/user/:user', function(req, res){
+    User.get(req.params.user, function(err, user){
+      if(!user){
+        req.flash('error', '用户不存在！')
+        res.redirect('/')
+      }
+
+      res.send(user)
+    })
+  })
+
+  app.get('/users', function(req, res){
+    User.get(null, function(err, users){
+      if(err){
+        req.flash('error', err)
+        res.redirect('/')
+      }
+      res.render('users', {
+        users: users,
+        user: req.session.user,
+        success: req.flash('success').toString(),
+        error: req.flash('error').toString()
+      })
+    })
   })
 
   function checkLogin(req, res, next){

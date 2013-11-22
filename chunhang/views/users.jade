@@ -1,0 +1,11 @@
+//- 
+//- users
+//- 
+
+extends layout
+block content
+  ul
+  -users.forEach(function(user){
+    li
+      a(href="/user/#{user.name}") #{user.name}
+  -})

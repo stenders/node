@@ -46,13 +46,24 @@ User.get = function(name, callback){
         mongodb.close()
         return callback(err)
       }
-      collection.findOne({name: name}, function(err, user){
-        mongodb.close()
-        if(err){
-          return callback(err)
-        }
-        callback(null, user)
-      })
+
+      if(name){
+        collection.findOne({name: name}, function(err, user){
+          mongodb.close()
+          if(err){
+            return callback(err)
+          }
+          callback(null, user)
+        }) 
+      } else {
+        collection.find({}).toArray(function(err, users){
+          mongodb.close()
+          if(err){
+            return callback(err)
+          }
+          callback(null, users)
+        })
+      }
     })
   })
 }
