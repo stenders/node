@@ -7,17 +7,18 @@ extends layout
 block content
   if (user)
     div.container
+      div.jumbotron
+        h1.text-center Have Fun,Now!
       div.row
         - posts.forEach(function(post, index){
           div.col-md-4
             h2=post.title
             p by 
-              a(href="#") #{post.name}
-            p from 
-              small=post.time
+              a(href="/#{post.name}") #{post.name}
+              small.pull-right #{post.time}
             p.posts #{post.post}
             p
-              a.btn.btn-default(href="#",role="button") View details »
+              a.btn.btn-default(href="/#{post.name}",role="button") View details »
         - })
   else
     div.jumbotron
