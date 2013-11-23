@@ -2,32 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Chat</title>
+  <title>NodeJS在线聊天室</title>
+  <link rel="stylesheet" type="text/css" href="./css/index.css">
 </head>
 <body>
-<ul>
-  
-</ul>
-<form id="chat">
-  <input type="text" id="text" />
-  <input type="submit" value="发送">
-</form>
-  <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-  <script type="text/javascript">
-  var socket = io.connect('http://127.0.0.1:3000')
-  var ul = $('ul')
-  var text = $('#text')
-  socket.on('message', function(msg){
-    ul.append('<li>' + msg + '</li>')
-  })
+  <h1>Welcome to Chat Room</h1>
+  <div class="wrapper">
+    <div class="fl">
+      <p><strong>在线用户列表 <em id="num">0</em>人</strong></p>
+      <ul id="users">
+        <!-- <li>chunhang</li> -->
+      </ul>
+    </div>
+    <div class="fr">
+      <ul id="dialog"></ul>
+      <!-- <textarea id="area" disabled></textarea> -->
+      <form action="" id="form">
+        <div class="configs">
+          大小
+          <select id="font-size">
+            <option value="12">12</option>
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="18">18</option>
+          </select>
+          字体
+          <select id="font-family">
+            <option value="Microsoft Yahei">雅黑</option>
+            <option value="SimHei">黑体</option>
+            <option value="Simsun">宋体</option>
+            <option value="Arial">Arial</option>
+          </select>
+          颜色
+          <input type="color" id="color" placeholer="看不到选色器就请输入颜色值" />
+          粗体
+          <input type="checkbox" id="font-weight">
+          斜体
+          <input type="checkbox" id="font-style">
+        </div>
+        <input type="text" id="text" placeholder="Say Something...">
+        <button type="submit">发送</button>
+      </form>
+    </div>
+  </div>
 
-  $('#chat').submit(function(e){
-    e.preventDefault()
-    socket.send(text.val())
-    ul.append(text.val())
-    text.val('')
-  })
-  </script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

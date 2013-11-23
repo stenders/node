@@ -9,31 +9,32 @@ body,ul,li,div,textarea,input,button,p{
 h1{
   text-align: center;
 }
-textarea{
-  resize: none;
-}
-input{
+input[type="text"]{
+  width: 85%;
   height: 20px;
-  width: 86%;
   vertical-align: middle;
   padding: 0 5px;
 }
+input{
+
+}
 button{
-  width: 40px;
+  width: 10%;
+  max-width: 100px;
   height: 24px;
   display: inline-block;
 }
 .wrapper{
   width: 80%;
   min-width: 500px;
-  height: 350px;
+  height: 400px;
   margin: 0 auto;
   border: 1px solid #000;
   overflow: hidden;
 }
 .fl{
   width: 19%;
-  height: 350px;
+  height: 400px;
   float: left;
   border-right: 1px solid #000;
   overflow: auto;
@@ -42,19 +43,22 @@ ul li{
   padding: 10px;
   text-align: left;
 }
-p{
+.fl p{
   border-bottom: 1px solid #000;
   text-align: center;
   padding: 10px;
 }
 div.fr{
   width: 80%;
-  height: 350px;
+  height: 400px;
   float: right;
 }
-textarea{
+#dialog{
   width: 100%;
   height: 300px;
-  background: #000;
-  color: #fff;
+  margin-bottom: 10px;
+  overflow: auto;
+}
+.configs{
+  margin-bottom: 10px;
 }

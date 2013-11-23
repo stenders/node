@@ -6,7 +6,7 @@ fs = require 'fs'
 app = http.createServer (req, res) ->
   pathname = url.parse(req.url).pathname
   if pathname is '/' or pathname.indexOf('html') isnt -1
-    fs.readFile './index3.html', (err, data) ->
+    fs.readFile './index.html', (err, data) ->
       res.writeHead 200, 'Content-Type': 'text/html'
       res.end data
   else if pathname.indexOf('css') isnt -1
@@ -23,14 +23,19 @@ app.listen 3000
 io = socket.listen app
 
 users = []
+posts = []
 
 io.sockets.on 'connection', (client) ->
+
   client.on 'join', (name) ->
     client.set 'name', name
 
     users.push name
+
     client.broadcast.emit 'users', users
     client.emit 'users', users
+
+    client.emit 'push data', posts
 
     console.log 'User: ' + name + ' has connected.'
 
@@ -43,6 +48,7 @@ io.sockets.on 'connection', (client) ->
 
   client.on 'message', (data) ->
     client.get 'name', (err, name) ->
-      str = name + ': ' + data
-      client.broadcast.emit 'push data', str
-      client.emit 'push data', str
+      dialog = name + ': ' + data
+      posts.push dialog
+      client.broadcast.emit 'push data', dialog
+      client.emit 'push data', dialog
