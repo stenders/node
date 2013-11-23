@@ -17,31 +17,35 @@
     <div class="fr">
       <ul id="dialog"></ul>
       <!-- <textarea id="area" disabled></textarea> -->
-      <form action="" id="form">
-        <div class="configs">
+      <form action="" id="form" role="form">
+        <div class="configs form-group">
           大小
-          <select id="font-size">
+          <select id="font-size" class="form-control">
             <option value="12">12</option>
             <option value="14">14</option>
-            <option value="16">16</option>
+            <option value="16" selected="selected">16</option>
             <option value="18">18</option>
           </select>
           字体
-          <select id="font-family">
+          <select id="font-family" class="form-control">
             <option value="Microsoft Yahei">雅黑</option>
             <option value="SimHei">黑体</option>
             <option value="Simsun">宋体</option>
+            <option value="隶书">隶书</option>
+            <option value="楷体">楷体</option>
             <option value="Arial">Arial</option>
           </select>
           颜色
-          <input type="color" id="color" placeholer="看不到选色器就请输入颜色值" />
+          <input type="color" id="color" placeholder="请输入16进制颜色值" />
           粗体
           <input type="checkbox" id="font-weight">
           斜体
           <input type="checkbox" id="font-style">
         </div>
-        <input type="text" id="text" placeholder="Say Something...">
-        <button type="submit">发送</button>
+        <div class="form-group">
+          <input type="text" class="form-control" id="text" placeholder="Say Something...">
+          <input type="submit" value="发送" class="btn btn-success" />
+        </div>
       </form>
     </div>
   </div>

@@ -19,7 +19,7 @@ var userlist = $('users')
 form.addEventListener('submit', function(e){
   e.preventDefault()
   if(!text.value) return
-  socket.emit('message', render(text.value))
+  socket.emit('message', {msg:render(text.value), time: (new Date).toLocaleString()})
   text.value = null
 })
 

@@ -47,7 +47,7 @@ io.sockets.on 'connection', (client) ->
 
   client.on 'message', (data) ->
     client.get 'name', (err, name) ->
-      dialog = name + ': ' + data
+      dialog = name + ': <small>' + data.time + '</small>' + data.msg
       posts.push dialog
       client.broadcast.emit 'push data', dialog
       client.emit 'push data', dialog
