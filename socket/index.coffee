@@ -1,0 +1,48 @@
+http = require 'http'
+socket = require 'socket.io'
+url = require 'url'
+fs = require 'fs'
+
+app = http.createServer (req, res) ->
+  pathname = url.parse(req.url).pathname
+  if pathname is '/' or pathname.indexOf('html') isnt -1
+    fs.readFile './index3.html', (err, data) ->
+      res.writeHead 200, 'Content-Type': 'text/html'
+      res.end data
+  else if pathname.indexOf('css') isnt -1
+    fs.readFile './css/index.css', (err, data) ->
+      res.writeHead 200, 'Content-Type' : 'text/css'
+      res.end data
+  else if pathname.indexOf('js') isnt -1
+    fs.readFile './js/main.js', (err, data) ->
+      res.writeHead 200, 'Content-Type' : 'text/javascript'
+      res.end data
+
+app.listen 3000
+
+io = socket.listen app
+
+users = []
+
+io.sockets.on 'connection', (client) ->
+  client.on 'join', (name) ->
+    client.set 'name', name
+
+    users.push name
+    client.broadcast.emit 'users', users
+    client.emit 'users', users
+
+    console.log 'User: ' + name + ' has connected.'
+
+  client.on 'disconnect', ->
+    client.get 'name', (err, name) ->
+      index = users.indexOf name
+      users.splice index, 1
+      client.broadcast.emit 'users', users
+      client.emit 'users', users
+
+  client.on 'message', (data) ->
+    client.get 'name', (err, name) ->
+      str = name + ': ' + data
+      client.broadcast.emit 'push data', str
+      client.emit 'push data', str

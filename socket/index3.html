@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NodeJS在线聊天室</title>
+  <link rel="stylesheet" type="text/css" href="./css/index.css">
+</head>
+<body>
+  <h1>Welcome to Chat Room</h1>
+  <div class="wrapper">
+    <div class="fl">
+      <p><strong>在线用户列表</strong></p>
+      <ul id="users">
+        <!-- <li>chunhang</li> -->
+      </ul>
+    </div>
+    <div class="fr">
+      <textarea id="area" disabled></textarea>
+      <form action="" id="form">
+        <input type="text" id="text" placeholder="说点啥">
+        <button type="submit">发送</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
