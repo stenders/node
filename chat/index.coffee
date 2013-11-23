@@ -44,7 +44,6 @@ io.sockets.on 'connection', (client) ->
       index = users.indexOf name
       users.splice index, 1
       client.broadcast.emit 'users', users
-      client.emit 'users', users
 
   client.on 'message', (data) ->
     client.get 'name', (err, name) ->
