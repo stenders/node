@@ -2,12 +2,19 @@
 
 var socket = io.connect()
 
-var name;
-do {
-  name = String(prompt('请输入您的用户名')).replace(/^\s+|\s+$/g, '')
-} while( !name || name === 'null')
+var name
+var preName = localStorage.getItem('name')
+
+if(!preName){
+  while(!name || name === 'null'){
+    name = String(prompt('请输入您的用户名', preName)).replace(/^\s+|\s+$/g, '')
+  }
+} else {
+  name = preName
+}
 
 socket.emit('join', name)
+localStorage.setItem('name', name)
 
 var $ = function(id){return document.getElementById(id)}
 var text = $('text')
@@ -15,6 +22,7 @@ var area = $('dialog')
 var form = $('form')
 var num  = $('num')
 var userlist = $('users')
+var logout = $('logout')
 
 form.addEventListener('submit', function(e){
   e.preventDefault()
@@ -66,5 +74,11 @@ function render(data){
   p.appendChild(document.createTextNode(data))
   return p.outerHTML
 }
+
+logout.addEventListener('click', function(){
+  localStorage.clear()
+  window.open('','_self','');
+  window.close();
+}, false)
 
 }())
