@@ -26,17 +26,17 @@ app.listen 3000
 
 io = socket.listen app
 
-users = []
+users = {}
 posts = []
 
 io.sockets.on 'connection', (client) ->
 
   client.on 'join', (name) ->
+    if name of users
+      return client.emit 'multi users'
+    else
+      users[name] = name
 
-    # unique users
-    if -1 is users.indexOf name 
-      users.push name
-    
     client.set 'name', name
     client.broadcast.emit 'users', users
     client.emit 'users', users
@@ -47,8 +47,8 @@ io.sockets.on 'connection', (client) ->
 
   client.on 'disconnect', ->
     client.get 'name', (err, name) ->
-      index = users.indexOf name
-      users.splice index, 1
+      if name of users
+        delete users[name]
       client.broadcast.emit 'users', users
 
   client.on 'message', (data) ->

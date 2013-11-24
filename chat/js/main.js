@@ -46,10 +46,10 @@ socket.on('users', updateUser)
 
 function updateUser(users){
   userlist.innerHTML = ''
-  users.forEach(function(user){
-    updateData(userlist, user)
-  })
-  num.innerHTML = users.length
+  for(var i in users){
+    updateData(userlist, i)
+  }
+  num.innerHTML = Object.keys(users).length
 }
 
 function updateData(bin, data){
@@ -77,8 +77,17 @@ function render(data){
 
 logout.addEventListener('click', function(){
   localStorage.clear()
+  closeTab()
+}, false)
+
+socket.on('multi users', function(){
+  alert('您已经登录.')
+  closeTab()
+})
+
+function closeTab(){
   window.open('','_self','');
   window.close();
-}, false)
+}
 
 }())
